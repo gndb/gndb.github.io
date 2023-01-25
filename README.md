@@ -2,16 +2,7 @@
 * 这是一个导航页，只发沁影上网时学习到的干货，慢慢补充优化，大神轻喷     
 * 注意：本页面大部分链接需要翻墙访问        
 * [ip111.cn全方位查询您的IP地址](http://www.ip111.cn/)                      
-
-## 上网目的相关     
-* [奈菲影视安卓APP下载页](https://www.nfmovies.com/app.html)          
-* [奈菲影视免费在线看影视剧综艺](https://www.nfmovies.com/)     
-* [影视剧资源分享及羊毛优惠活动分享](https://t.me/joinchat/AAAAAEhkwtQjONQXe--Z8g)      
-* [远鉴字幕组发布频道](https://t.me/joinchat/AAAAAE3AeBfFEPXuMGLzWw)          
-* [未成年止步频道](https://t.me/joinchat/AAAAAEXqWisZQOtbw64IMw)           
-* [今日热榜](https://tophub.today/)            
-* [火绒安全论坛](https://bbs.huorong.cn)              
-
+     
 
 ## 上网工具相关
 
