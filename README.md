@@ -58,9 +58,4 @@
 * [PC播放器](./tool/PCBoFangQi.md)            
 * [手机浏览器(播放器)](./tool/ShouJiLiuLanQi.md)        
 
-## 友情链接         
-* [奈菲影视](https://www.nfmovies.com/)          
-
-本页面合作联系：[沁影](https://t.me/QinShadow)       
-![鸡腿姑娘](./logo.jpg)       
 
