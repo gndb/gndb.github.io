@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有趣的互动网页</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 1s;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #4b0082;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+        
+        .color-changer {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #9370db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .color-changer:hover {
+            transform: scale(1.1);
+        }
+        
+        .pet {
+            width: 100px;
+            height: 100px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+            margin: 20px auto;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .pet .eyes {
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            width: 60px;
+            top: 30px;
+            left: 20px;
+        }
+        
+        .pet .eye {
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .pet .eye::after {
+            content: '';
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            background-color: black;
+            border-radius: 50%;
+            top: 4px;
+            left: 4px;
+        }
+        
+        .pet .mouth {
+            position: absolute;
+            width: 30px;
+            height: 10px;
+            border-radius: 0 0 15px 15px;
+            background-color: #ff3366;
+            bottom: 25px;
+            left: 35px;
+        }
+        
+        .counter-container {
+            margin: 20px 0;
+        }
+        
+        .counter {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4b0082;
+        }
+        
+        .floating-items {
+            position: relative;
+            height: 100px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .floating-item {
+            position: absolute;
+            animation: float 5s linear infinite;
+            opacity: 0;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>欢迎来到我的有趣网页！</h1>
+        
+        <div class="pet" id="pet">
+            <div class="eyes">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+            <div class="mouth"></div>
+        </div>
+        
+        <p>点击上面的虚拟宠物和它互动！</p>
+        
+        <div class="counter-container">
+            你已经喂了宠物 <span class="counter" id="counter">0</span> 次
+        </div>
+        
+        <button class="color-changer" id="colorChanger">改变背景颜色</button>
+        
+        <div class="floating-items" id="floatingContainer"></div>
+        
+        <p>这个网页示例展示了一些基本的HTML、CSS和JavaScript交互效果。你可以：</p>
+        <ul style="text-align: left;">
+            <li>点击虚拟宠物和它互动</li>
+            <li>点击按钮改变背景颜色</li>
+            <li>观察动画效果</li>
+        </ul>
+    </div>
+
+    <script>
+        // 背景颜色变化功能
+        const colorChanger = document.getElementById('colorChanger');
+        const body = document.body;
+        const colors = ['#f0f8ff', '#e6e6fa', '#fff0f5', '#f5fffa', '#f0fff0'];
+        let colorIndex = 0;
+        
+        colorChanger.addEventListener('click', () => {
+            colorIndex = (colorIndex + 1) % colors.length;
+            body.style.backgroundColor = colors[colorIndex];
+        });
+        
+        // 虚拟宠物交互
+        const pet = document.getElementById('pet');
+        const counter = document.getElementById('counter');
+        let count = 0;
+        
+        pet.addEventListener('click', () => {
+            count++;
+            counter.textContent = count;
+            
+            // 宠物反应
+            pet.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                pet.style.transform = 'scale(1)';
+            }, 300);
+            
+            // 创建漂浮的食物图形
+            createFloatingItem();
+        });
+        
+        // 创建漂浮物
+        function createFloatingItem() {
+            const container = document.getElementById('floatingContainer');
+            const item = document.createElement('div');
+            item.className = 'floating-item';
+            
+            // 随机选择一种表情
+            const emojis = ['❤️', '🍔', '🍕', '🍦', '🍪', '✨'];
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            item.textContent = randomEmoji;
+            item.style.fontSize = '24px';
+            
+            // 随机位置
+            const position = Math.random() * 100;
+            item.style.left = `${position}%`;
+            
+            // 随机动画速度
+            const speed = 3 + Math.random() * 4;
+            item.style.animation = `float ${speed}s linear infinite`;
+            
+            container.appendChild(item);
+            
+            // 5秒后移除
+            setTimeout(() => {
+                container.removeChild(item);
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
